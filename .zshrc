@@ -15,6 +15,7 @@ export ZOXIDE_CMD_OVERRIDE=cd
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=false
 export ZSH_TMUX_AUTOQUIT=false
+export XDG_CONFIG_HOME=/home/arend/.config/
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -104,7 +105,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load custom aliases
-for file in ~/.aliases/*; do
+for file in ~/.dotfiles/aliases/*; do
     if [[ -f $file && -r $file && $file != *.swp ]]; then
         source "$file"
     fi

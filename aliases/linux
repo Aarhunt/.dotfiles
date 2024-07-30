@@ -1,0 +1,28 @@
+
+# Commands
+alias ll="ls -AghF" 
+alias lsls="ls -Qm"
+
+alias pdf="evince"
+
+alias please='sudo $(history -p !!)'
+
+# nvim
+alias nivm="nvim"
+alias vim="nvim"
+alias vi="nvim"
+alias nano="nvim"
+
+# speed
+alias zshrc="nvim ~/.zshrc"
+alias aur="fc -s 'sudo pacman'='paru'"
+
+# Keybinds
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# SSH
+alias ssh="ssh -- /bin/sh -c 'tmux has-session && exec tmux a || exec tmux"
+
+# Theming
+alias wal='wal -b "#1e1e2e" -s'

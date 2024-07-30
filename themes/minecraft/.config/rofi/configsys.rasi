@@ -1,0 +1,89 @@
+/*****----- Configuration -----*****/
+configuration {
+  show-icons:         false;  
+}
+
+/*****----- Global Properties -----*****/
+@import                          "shared/colorsmc.rasi"
+@import                          "shared/fontsmc.rasi"
+
+
+/*****----- Main Window -----*****/
+window {
+  transparency:       "real";
+  location:           center;
+  anchor:             center;
+  fullscreen:         true;
+
+  border:             0px;
+
+  background-color:   transparent;
+  cursor:             default;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+  enabled:            true;
+  children:           ["listview"];
+  padding:            30%;
+}
+
+/*****----- Listview -----*****/
+listview {
+  lines:              5;
+  cycle:              false;
+  scrollbar:          false;
+  layout:             vertical;
+  fixed-height:       true;
+  background-color:   transparent;
+  text-color:         @text;
+  cursor:             "default";
+  border:             0px;
+  spacing:            10px;
+}
+
+/*****----- Elements -----*****/
+element {
+  text-color:         @text;
+  orientation:        vertical;
+  cursor:             pointer;
+  border:             3px solid;
+  border-color:       black;
+  padding:            0px;
+}
+
+element.alternate.normal, element.normal.normal {
+  background-color:   @background;
+  text-color:         @text;
+}
+
+element.selected.normal {
+  background-color:   @foreground;
+}
+
+element-icon {
+  enabled:            false;
+  size:               0px;
+}
+
+element-text {
+  text-color:         @text;
+  horizontal-align:   0.5;
+  vertical-align:     0.5;
+  cursor:             inherit;
+  padding:            10px;
+  layout:             horizontal;
+}
+
+shadowb {
+  background-color:   @shadow;
+}
+shadowr {
+  background-color:   @shadow;
+}
+shadowt {
+  background-color:   @red;
+}
+shadowl {
+  background-color:   @shadowl;
+}
