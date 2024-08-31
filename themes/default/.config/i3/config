@@ -23,7 +23,7 @@ exec xidlehook \
     'xrandr --output "eDP-1" --brightness .5' \
     'xrandr --output "eDP-1" --brightness 1' \
   --timer 10 \
-    'xrandr --output "eDP-1" --brightness 1; i3lock' \
+    'xrandr --output "eDP-1" --brightness 1; i3locka' \
     '' \
   --timer 3600 \
     'systemctl suspend' \
@@ -184,7 +184,7 @@ mode "resize" {
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date)"
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/Screenshots/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/Screenshots/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/arend/Pictures/Screenshots/$(date)"
 
 ## Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
