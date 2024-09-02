@@ -59,6 +59,14 @@ bindsym $mod+Tab exec --no-startup-id ~/.dotfiles/scripts/alttab.sh
 bindsym $mod+x exec --no-startup-id ~/.dotfiles/scripts/i3lock
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+x exec ~/.dotfiles/scripts/system_prompt
+bindsym $mod+t exec ~/.dotfiles/scripts/translate.sh 
+bindsym $mod+Shift+t exec ~/.dotfiles/scripts/translate.sh :nl
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 # change focus
 bindsym $mod+j focus left
