@@ -25,5 +25,8 @@ bindkey "^[[1;5D" backward-word
 alias v="xclip -o"
 alias c="xclip"
 
+# Belangrijk
+alias waaromishetstuk="figlet MEX"
+
 # SSH
 # alias ssh="ssh -- /bin/sh -c 'tmux has-session && exec tmux a || exec tmux"

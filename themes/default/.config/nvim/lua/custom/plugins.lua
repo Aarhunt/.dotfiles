@@ -20,6 +20,15 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter-context"
+  },
+  {
+    "fpeterek/nvim-surfers",
+    config = function()
+      require('nvim-surfers').setup({
+        use_tmux = true,
+      })
+    end,
+    lazy = false,
   }
 }
 return plugins
