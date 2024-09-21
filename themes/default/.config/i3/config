@@ -61,6 +61,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+x exec ~/.dotfiles/scripts/system_prompt
 bindsym $mod+t exec ~/.dotfiles/scripts/translate.sh 
 bindsym $mod+Shift+t exec ~/.dotfiles/scripts/translate.sh :nl
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -360,7 +361,7 @@ exec setxkbmap us,us -variant colemak_dh,
 exec kitty
 exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
 exec_always feh --bg-fill ~/wallpaper.png
-exec_always wal -R
+exec_always wal -R -s
 exec_always picom -fb --transparent-clipping
 exec_always --no-startup-id clipcatd 
 
