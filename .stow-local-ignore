@@ -1,7 +1,9 @@
-aliases/
-themes/
-.git
-scripts/
+/install.sh
+/aliases
+/themes
+/.git
+/scripts
 ^/README.*
-desktop/
-./wallpapers/
+/desktop
+/wallpapers
+
