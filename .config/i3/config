@@ -63,7 +63,7 @@ bindsym $mod+Tab exec --no-startup-id ~/.dotfiles/scripts/alttab.sh
 bindsym $mod+x exec --no-startup-id ~/.dotfiles/scripts/i3lock
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+x exec ~/.dotfiles/scripts/system_prompt.sh
-bindsym $mod+t exec ~/.dotfiles/scripts/translate.sh 
+bindsym $mod+t exec rofi -show trans -modi trans -no-show-match -no-sort
 bindsym $mod+Shift+t exec ~/.dotfiles/scripts/translate.sh :nl
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
 bindsym $mod+i exec ~/.dotfiles/scripts/packageinstaller.sh
