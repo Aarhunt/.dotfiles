@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Terminate already running bar instances
 killall -q polybar
@@ -14,7 +14,8 @@ SECONDARY=$(xrandr -q | grep ' connected' | grep -v 'primary' |cut -d" " -f1)
 
 case $amt in 
   1)
-    export PRIMARY=$screens
+    PRIMARY=$screens
+    xrandr --output $PRIMARY --primary
     ;;
   2)
     xrandr --output $PRIMARY --primary --output $SECONDARY

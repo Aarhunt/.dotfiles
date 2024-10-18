@@ -19,7 +19,12 @@ local plugins = {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter-context"
+  "nvim-treesitter/nvim-treesitter-context",
+  event = "VeryLazy",
+  opts = function()
+    local tsc = require("treesitter-context").setup({enable = true,})
+    return { mode = "cursor", max_lines = 3 }
+  end,
   },
   {
     "fpeterek/nvim-surfers",
@@ -29,6 +34,6 @@ local plugins = {
       })
     end,
     lazy = false,
-  }
+  },
 }
 return plugins
