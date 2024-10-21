@@ -94,4 +94,5 @@ unset __conda_setup
 
 eval "$(atuin init zsh)"
 
-fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
+# Uncomment for a fun welcome to a new terminal
+# fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)

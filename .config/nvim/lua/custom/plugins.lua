@@ -35,5 +35,13 @@ local plugins = {
     end,
     lazy = false,
   },
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false,
+  },
+  {
+    "gelguy/wilder.nvim",
+    lazy = false,
+  }
 }
 return plugins

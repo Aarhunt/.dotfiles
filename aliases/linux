@@ -1,11 +1,14 @@
 # Commands
 alias ll="ls -AghF" 
+alias la="ls -aA"
 alias lsls="ls -Qm"
 alias od="onedrive -m --skip-dir .git --check-for-nosync"
 
 alias pdf="evince"
 
 alias please='sudo $(history -p !!)'
+
+alias wal='wal -s'
 
 # nvim
 alias nivm="nvim"
