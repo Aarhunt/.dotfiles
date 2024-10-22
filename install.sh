@@ -46,4 +46,7 @@ else
 fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+# Install zsh-autosugestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
 # GTK theme?

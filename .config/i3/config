@@ -1,3 +1,5 @@
+exec autorandr --change
+
 # Set the variables for mod windows and alt. 
 set $mod Mod4
 set $alt Mod1
@@ -6,28 +8,11 @@ set $alt Mod1
 # is used in the bar {} block below.
 font pango:JetBrainsMono 8
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-
-# Run xidlehook, got this from the xidlehook github 
-exec xidlehook \
-  --not-when-fullscreen \
-  --not-when-audio \
-  --timer 300 \
-    'xrandr --output "eDP-1" --brightness .5' \
-    'xrandr --output "eDP-1" --brightness 1' \
-  --timer 10 \
-    'xrandr --output "eDP-1" --brightness 1; i3locka' \
-    '' \
-  --timer 3600 \
-    'systemctl suspend' \
-    ''
+set $DISPLAYS "$(xrandr | awk '/ connected/{print $1}')"
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -51,27 +36,20 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
-
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # Program keybinds
 bindsym $mod+d exec rofi -show combi -terminal kitty -combi-hide-mode-prefix
-bindsym $mod+Tab exec --no-startup-id ~/.dotfiles/scripts/alttab.sh
-bindsym $mod+x exec --no-startup-id ~/.dotfiles/scripts/i3lock
+bindsym $mod+x exec --no-startup-id i3lockcolor
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+x exec ~/.dotfiles/scripts/system_prompt.sh
 bindsym $mod+t exec rofi -show trans -modi trans -no-show-match -no-sort
 bindsym $mod+Shift+t exec ~/.dotfiles/scripts/translate.sh :nl
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
-bindsym $mod+i exec ~/.dotfiles/scripts/packageinstaller.sh
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
-
-# Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
 # change focus
@@ -98,10 +76,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# Split horizontally or vertically:
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -242,116 +218,6 @@ set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym h      mode "$mode_gaps_horiz"
-        bindsym v      mode "$mode_gaps_verti"
-        bindsym t      mode "$mode_gaps_top"
-        bindsym r      mode "$mode_gaps_right"
-        bindsym b      mode "$mode_gaps_bottom"
-        bindsym l      mode "$mode_gaps_left"
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_horiz" {
-        bindsym plus  gaps horizontal current plus 5
-        bindsym minus gaps horizontal current minus 5
-        bindsym 0     gaps horizontal current set 0
-
-        bindsym Shift+plus  gaps horizontal all plus 5
-        bindsym Shift+minus gaps horizontal all minus 5
-        bindsym Shift+0     gaps horizontal all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_verti" {
-        bindsym plus  gaps vertical current plus 5
-        bindsym minus gaps vertical current minus 5
-        bindsym 0     gaps vertical current set 0
-
-        bindsym Shift+plus  gaps vertical all plus 5
-        bindsym Shift+minus gaps vertical all minus 5
-        bindsym Shift+0     gaps vertical all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_top" {
-        bindsym plus  gaps top current plus 5
-        bindsym minus gaps top current minus 5
-        bindsym 0     gaps top current set 0
-
-        bindsym Shift+plus  gaps top all plus 5
-        bindsym Shift+minus gaps top all minus 5
-        bindsym Shift+0     gaps top all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_right" {
-        bindsym plus  gaps right current plus 5
-        bindsym minus gaps right current minus 5
-        bindsym 0     gaps right current set 0
-
-        bindsym Shift+plus  gaps right all plus 5
-        bindsym Shift+minus gaps right all minus 5
-        bindsym Shift+0     gaps right all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_bottom" {
-        bindsym plus  gaps bottom current plus 5
-        bindsym minus gaps bottom current minus 5
-        bindsym 0     gaps bottom current set 0
-
-        bindsym Shift+plus  gaps bottom all plus 5
-        bindsym Shift+minus gaps bottom all minus 5
-        bindsym Shift+0     gaps bottom all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_left" {
-        bindsym plus  gaps left current plus 5
-        bindsym minus gaps left current minus 5
-        bindsym 0     gaps left current set 0
-
-        bindsym Shift+plus  gaps left all plus 5
-        bindsym Shift+minus gaps left all minus 5
-        bindsym Shift+0     gaps left all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-
 smart_borders on
 smart_borders no_gaps
 default_border pixel 2
@@ -363,12 +229,12 @@ workspace_auto_back_and_forth yes
 
 # Execute before launch
 exec setxkbmap us,us -variant colemak_dh,
+# exec_always --no-startup-id ~/.dotfiles/scripts/dualscreen.sh
+exec feh --bg-fill ~/wallpaper.png
+exec wal -R -s
+exec picom -fb --transparent-clipping
+exec --no-startup-id clipcatd 
 exec kitty
-exec_always --no-startup-id ~/.dotfiles/scripts/dualscreen.sh
-exec_always feh --bg-fill ~/wallpaper.png
-exec_always wal -R -s
-exec_always picom -fb --transparent-clipping
-exec_always --no-startup-id clipcatd 
 
 # Set commands for clipcat
 set $launcher-clipboard-insert clipcat-menu insert

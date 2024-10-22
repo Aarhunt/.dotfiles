@@ -11,6 +11,7 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=false
 export ZSH_TMUX_AUTOQUIT=false
 export XDG_CONFIG_HOME=$HOME/.config/
+export ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 
 # Initialize some programs
 eval "$(oh-my-posh init zsh --config $HOME/.ohmyposh/themes/negligible.omp.json)"
@@ -48,6 +49,7 @@ plugins=(
   archlinux
   zoxide
   colored-man-pages
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
