@@ -5,10 +5,10 @@
 
 dark_shade='#000000dd'
 darker_shade='#000000dd'
-green='#a9b665'
-yellow='#d8a657'
-red='#ea6962'
-white='#d4be98'
+green='#239F9A'
+yellow='#2D628A'
+red='#BA274A'
+white='#93e0d0'
 black='#3c3836'
 blacker='#282828'
 
@@ -87,6 +87,11 @@ one_word_args=(
 	"--modif-pos=$modif_pos"
 )
 
+paused=$(dunstctl is-paused)
+
+dunstctl set-paused true
+
+
 i3lock ${one_word_args[@]} \
 	--time-font="$font" \
 	--date-font="$font" \
@@ -96,4 +101,5 @@ i3lock ${one_word_args[@]} \
 	--greeter-font="$font" \
 	\
 	--time-str="$time_str" \
-	--date-str="$date_str"
+	--date-str="$date_str" \
+  -n; dunstctl set-paused $paused

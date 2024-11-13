@@ -6,7 +6,20 @@ alias od="onedrive -m --skip-dir .git --check-for-nosync"
 
 alias pdf="evince"
 
-alias please='sudo $(history -p !!)'
+# Elevates the last run command using sudo
+function elevate_last_command() {
+    # Check if running with ZSH history verification
+    if [ -z ${HIST_VERIFY+x} ]; then
+        setopt no_histverify
+        sudo `fc -ln -1`
+        setopt histverify
+    else
+        sudo `fc -ln -1`
+    fi
+}
+
+# Assign an alias to the function
+alias please=elevate_last_command
 
 alias wal='wal -s'
 
@@ -34,3 +47,9 @@ alias bj="curl parrot.live"
 
 # SSH
 # alias ssh="ssh -- /bin/sh -c 'tmux has-session && exec tmux a || exec tmux"
+
+runc() {
+    #do things with parameters like $1 such as
+    gcc -Wall -o prog "$1" 
+    ./prog
+}

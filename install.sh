@@ -13,6 +13,8 @@ cd paru
 makepkg -si
 cd .. && rm -rf paru # Cleanup
 
+sudo cp ./scripts/i3lock.sh /bin/i3lockcolor
+
 # Install packages
 sudo pacman -S --needed --noconfirm - < ./.vars/pacman.txt 
 paru -S - < ./.vars/aur.txt
