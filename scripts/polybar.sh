@@ -15,14 +15,18 @@ fi
 # The first argument is the single element
 single_element=$1
 
+echo $single_element
 MONITOR=$single_element polybar primary &
 
 # Shift to get the list of monitors as remaining arguments
 shift
 monitor_list=("$@")
 
-# Loop through each monitor in the monitor list
-for monitor in "${monitor_list[@]}"; do
-    MONITOR=$monitor polybar secondary &
-done
 
+if [ ! -z $monitor_list]
+then
+  # Loop through each monitor in the monitor list
+  for monitor in "${monitor_list[@]}"; do
+    MONITOR=$monitor polybar secondary &
+  done
+fi

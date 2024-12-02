@@ -6,9 +6,9 @@ case "$1" in
         ;;
     *)
         if [ "$(dunstctl is-paused)" = "true" ]; then
-            echo "\ueaa2"
+            echo "󰂛"
         else
-            echo "\uec08"
+            echo "󰂚"
         fi
         ;;
 esac
