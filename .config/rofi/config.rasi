@@ -1,123 +1,177 @@
-// vim: fdm=marker
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
 
+/*****----- Configuration -----*****/
 configuration {
-  modes: "combi";
-  combi-modes: "window,drun,ssh";
-  show-icons: true;
-  drun-display-format: "{name}";
-  window-format: "{w} · {c}";
-  window-thumbnail: true;
+	modes:                       "combi";
+  combi-modes:                 "drun";
+    show-icons:                 true;
+	drun-display-format:        "{name}";
 }
-
 
 /*****----- Global Properties -----*****/
-@import                          "~/.cache/wal/colors-rofi-dark.rasi"
-@import                          "shared/fonts.rasi"
+@import                          "shared/colorsmc.rasi"
+@import                          "shared/fontsmc.rasi"
 
+/*****----- Main Window -----*****/
 window {
-  fullscreen: true;
-  padding: 35% 30%;       // you might want to ajust these to resize rofi.
-  transparency: "real";
-  background-color: #28282895;
-  border-color: transparent;
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-color:                @selected;
+    background-color:            black / 10%;
+    cursor:                      "default";
 }
 
-listview {
-  border: 0 0 0 0;
-  padding: 23 0 0;
-  scrollbar: true;
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    margin:                      0px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                @foreground;
+    background-color:            transparent;
+    children:                    ["listview", inputbar];
 }
 
-scrollbar {
-    width:        4px;
-    border:       0;
-    handle-color: @foreground;
-    handle-width: 8px;
-    padding:      0 5;
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    margin:                      0px;
+    border:                      10px solid;
+    border-color:                @foreground;
+    background-color:            @background;
+    text-color:                  @background-alt;
+    children:                    [ "prompt", "entry" ];
 }
 
+prompt {
+    enabled:                     false;
+    background-color:            @foreground;
+    text-color:                  inherit;
+    padding:                     3px;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "::";
+    background-color:            @background;
+    text-color:                  inherit;
+}
 entry {
-    placeholder: "";
+    enabled:                     true;
+    background-color:            @background;
+    text-color:                  inherit;
+    border:                      2px solid;
+    border-color:                @background-dark;
+    padding:                     3px;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
 }
 
-// less interesting stuff {{{
-
-// using elements from:
-// https://github.com/bardisty/gruvbox-rofi/blob/master/gruvbox-common.rasi
-
-textbox {
-    text-color: @foreground;
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    cycle:                       true;
+    lines:                       6;
+    columns:                     9;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-columns:               true;
+    fixed-height:                true;
+    spacing:                     6px;
+    margin:                      0px;
+    padding:                     80px 30px 0px;
+    border:                      10px solid;
+    border-color:                @foreground;
+    background-color:            transparent;
+    text-color:                  @background-alt;
+    cursor:                      "default";
+    background-image:            url("./Chest.webp", width);
+}
+scrollbar {
+    handle-width:                5px ;
+    handle-color:                @selected;
+    border-radius:               0px;
+    background-color:            @background-alt;
 }
 
+/*****----- Elements -----*****/
 element {
-    border:  0;
-    padding: 2px;
+    padding:                     15px -10px ;
+    enabled:                     true;
+    spacing:                     5px;
+    margin:                      0px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    orientation:                 vertical;
+    cursor:                      pointer;
 }
-element.normal.normal {
-    background-color: transparent;
-    text-color:       @foreground;
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
 }
-element.normal.urgent {
-    background-color: transparent;
-    text-color:       @urgent-foreground;
-}
-element.normal.active {
-    background-color: transparent;
-    text-color:       @active-foreground;
-}
-element.selected.normal {
-    background-color: @foreground;
-    text-color:       @background;
-}
-element.selected.urgent {
-    background-color: @foreground;
-    text-color:       @urgent-foreground;
-}
-element.selected.active {
-    background-color: @foreground;
-    text-color:       @background;
+element selected.normal {
+    background-color:            @foreground;
+    text-color:                  @foreground;
 }
 element.alternate.normal {
-    background-color: transparent;
-    text-color:       @foreground;
+    background-color:            transparent;
+    text-color:                  @foreground;
 }
-element.alternate.urgent {
-    background-color: transparent;
-    text-color:       @urgent-foreground;
+element.normal.active {
+    background-color:            transparent;
+    text-color:                  @foreground;
 }
-element.alternate.active {
-    background-color: transparent;
-    text-color:       @active-foreground;
+element selected.active {
+    background-color:            @foreground;
+    text-color:                  @foreground;
 }
-
-sidebar {
-    border:       2px 0 0;
-    border-color: @foreground;
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        64px;
+    cursor:                      inherit;
 }
-
-inputbar {
-    spacing:    0;
-    text-color: @foreground;
-    padding:    2px;
-    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
-}
-
-case-indicator,
-entry,
-prompt,
-button {
-    spacing:    0;
-    text-color: @foreground;
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    enabled:                     false;
 }
 
-button.selected {
-    background-color: @foreground;
+/*****----- Message -----*****/
+error-message {
+    padding:                     15px;
+    border:                      2px solid;
+    border-radius:               10px;
+    border-color:                @selected;
+    background-color:            black / 10%;
+    text-color:                  @foreground;
 }
-
-textbox-prompt-sep {
-    expand:     false;
-    str:        ":";
-    text-color: @foreground;
-    margin:     0 0.3em 0 0;
+textbox {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
 }
-// }}}
