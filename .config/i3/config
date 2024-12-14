@@ -13,7 +13,7 @@ font pango:JetBrainsMono 8
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 set $PRIMARY "$(xrandr | awk '/ primary/{print $1}')"
-set $SECONDARY "$(xrandr --query | awk '/ connected / && !/ primary/ {print $1}')"
+set $SECONDARY "$(xrandr --query | awk '/ connected / && !/ primary/ {print $1}') | tr '\n' ' '"
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.

@@ -20,13 +20,18 @@ MONITOR=$single_element polybar primary &
 
 # Shift to get the list of monitors as remaining arguments
 shift
-monitor_list=("$@")
+if [ $# -eq 1 ]; then
+    # Single argument, possibly a space-separated string
+    monitor_list=($1) # Split the string into an array
+else
+    # Multiple arguments, already split
+    monitor_list=("$@")
+fi
 
-
-if [ ! -z $monitor_list]
-then
+if [ ${#monitor_list[@]} -gt 0 ]; then
   # Loop through each monitor in the monitor list
   for monitor in "${monitor_list[@]}"; do
+    echo "Setting up monitor: $monitor"
     MONITOR=$monitor polybar secondary &
   done
 fi
