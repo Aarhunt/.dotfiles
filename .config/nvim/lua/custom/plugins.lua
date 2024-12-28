@@ -42,6 +42,10 @@ local plugins = {
   {
     "gelguy/wilder.nvim",
     lazy = false,
+  },
+  {
+    "elkowar/yuck.vim",
+    lazy = false,
   }
 }
 return plugins
