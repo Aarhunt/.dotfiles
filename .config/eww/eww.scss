@@ -1,0 +1,71 @@
+// ---------------- variables ----------------
+// pixel
+$pix: 4;
+
+
+// body
+$body_bg: #3d4863;
+
+// inventory
+$inv_bg: #c6c6c6;
+$inv_gap: .6rem;
+$inv_padding: .4rem;
+$inv_outline: #000000;
+$inv_border_top: #ffffff;
+$inv_border_bottom: #555555;
+$inv_border_pixel: 2px;
+
+// top
+$character_bg: black;
+$character_width: 5.7rem;
+$shield_gap: 5px;
+
+// cell
+$cell_bg: #8b8b8b;
+$cell_bg_hover: #a1a1a1;
+$cell_size: 2rem;
+$cell_bg_top: #373737;
+$cell_bg_bottom: #ffffff;
+$cell_bg_intersect: #8b8b8b;
+$cell_border: 2px;
+
+// hotbar
+$hot_bg: RGBA(0,0,0,0.4);
+$hot_bg_top: #5e5e5e;
+$hot_bg_bottom: #939393;
+$hot_border: $pix * 2;
+$hot_border2: $pix;
+
+$hot_act_bot: #ffffff;
+$hot_act_mid: #acbba8;
+$hot_act_top: #5f6d5c;
+$hot_act_b1: $pix * 3;
+$hot_act_b2: $pix * 2;
+$hot_act_b3: $pix;
+
+// ---------------- setup ----------------
+
+* {
+  all: unset;
+}
+
+.cells {
+  box-shadow: inset $hot_border $hot_border 0 0 $hot_bg_top, inset (-$hot_border) (-$hot_border) 0 0 $hot_bg_bottom, inset $hot_border2 $hot_border2 0 0 $hot_bg_bottom, inset (-$hot_border2) (-$hot_border2) 0 0 $hot_bg_top;
+  background-color: $hot_bg;
+  border-style: inset;
+  font-family: "Monocraft", monospace;
+  font-size: 30px;
+}
+
+.cella {
+    box-shadow: inset $hot_act_b1 $hot_act_b1 0 0 $hot_act_top, inset (-$hot_act_b1) (-$hot_act_b1) 0 0 $hot_act_bot, inset $hot_act_b2 $hot_act_b2 0 0 $hot_act_mid, inset (-$hot_act_b2) (-$hot_act_b2) 0 0 $hot_act_mid, inset $hot_act_b3 $hot_act_b3 0 0 $hot_act_bot, inset (-$hot_act_b3) (-$hot_act_b3) 0 0 $hot_act_top;
+}
+
+.around {
+  /* background-color: $inv_bg; */
+  border: #000000;
+  border-style: solid; 
+  border-width: 4px;
+}
+
+

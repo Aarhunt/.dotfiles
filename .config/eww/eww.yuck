@@ -1,0 +1,65 @@
+;; (workspaces :array workspacesArray)
+
+;; (deflisten workspacesArray :initial "${[1]}"
+;;   `~/.dotfiles/scripts/getWorkspaces.sh`)
+
+
+(deflisten workspacesActive :initial 0
+  `~/.dotfiles/scripts/getWorkspaces.sh`)
+
+(defwidget workspaces []
+  (box 
+      :orientation "h"
+      :space-evenly true
+      :class "around"
+    (cell :label 1)
+    (cell :label 2)
+    (cell :label 3)
+    (cell :label 4)
+    (cell :label 5)
+    (cell :label 6)
+    (cell :label 7)
+    (cell :label 8)
+    (cell :label 9)
+    )
+  )
+
+(defwidget cell [label]
+  (button :class "cells" :onclick `swaymsg workspace "${label}"` label)
+)
+
+(defwidget cella [number pix]
+  (box :class "cella" 
+       :style "margin-left: ${(number * 16 + (number * 2) * 2) * pix}; margin-right: ${((8 - number) * 16 + ((8 - number) * 2) * 2) * pix};"
+    )
+)
+
+(defwidget active [active pix]
+  (stack :same-size true :selected active :transition "none"
+    (cella :number 0 :pix pix)
+    (cella :number 1 :pix pix)
+    (cella :number 2 :pix pix)
+    (cella :number 3 :pix pix)
+    (cella :number 4 :pix pix)
+    (cella :number 5 :pix pix)
+    (cella :number 6 :pix pix)
+    (cella :number 7 :pix pix)
+    (cella :number 8 :pix pix)
+  )
+)
+
+(defwindow hotbar
+           :monitor 0
+           :geometry (geometry :x "0"
+                               :y "00px"
+                               :height "${(16 + 4 + 2) * 4}"
+                               :width "${(16 * 9 + 4 * 9 + 2) * 4}"
+                               :anchor "bottom center")
+           :stacking "fg"
+           :windowtype "dock"
+           :wm-ignore false
+  (overlay
+  (workspaces)
+  (active :active workspacesActive :pix 4)
+  )
+)
