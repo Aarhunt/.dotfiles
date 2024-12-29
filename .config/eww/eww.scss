@@ -43,16 +43,23 @@ $hot_act_b1: $pix * 3;
 $hot_act_b2: $pix * 2;
 $hot_act_b3: $pix;
 
+// menu
+$menu_bg: #6e6e6e;
+$menu_top: #aaaaaa;
+$menu_bottom: #505050;
+$menu_top_px: $pix * 1;
+$menu_bot_px: $pix * 2;
+
 // ---------------- setup ----------------
 
 * {
   all: unset;
+  font-family: "Monocraft", monospace;
 }
 
 .cells {
   box-shadow: inset $hot_border $hot_border 0 0 $hot_bg_top, inset (-$hot_border) (-$hot_border) 0 0 $hot_bg_bottom, inset $hot_border2 $hot_border2 0 0 $hot_bg_bottom, inset (-$hot_border2) (-$hot_border2) 0 0 $hot_bg_top;
   background-color: $hot_bg;
-  border-style: inset;
   font-family: "Monocraft", monospace;
   font-size: 30px;
 }
@@ -68,4 +75,21 @@ $hot_act_b3: $pix;
   border-width: 4px;
 }
 
+.menubutton {
+  box-shadow: inset $menu_top_px $menu_top_px 0 0 $menu_top, inset (-$menu_bot_px) (-$menu_bot_px) 0 0 $menu_bottom;
+  background-color: $menu_bg;
+  font-family: "Monocraft", monospace;
+  font-size: 30px;
+  padding: 15px;
 
+  &:hover {
+    border: #ffffff;
+    border-style: solid; 
+    border-width: 4px;
+  }
+}
+
+.f3text {
+  background-color: $hot_bg;
+  font-size: 18px;
+}

@@ -1,0 +1,41 @@
+(defpoll kernelvar :interval "100000s" `/home/minecraft/.dotfiles/scripts/f3.sh get_kernel`)
+(defpoll cpuvar :interval "1s" `/home/minecraft/.dotfiles/scripts/f3.sh get_cpu`)
+(defpoll resvar :interval "100000s" `/home/minecraft/.dotfiles/scripts/f3.sh get_resolution`)
+(defpoll gpuvar :interval "1s" `/home/minecraft/.dotfiles/scripts/f3.sh get_gpu`)
+
+(defwidget kernel [] ;; Kernel version
+ ;; Java: 17.03 64bit
+  (box :class "f3text" :halign "end" "Kernel: ${kernelvar}")
+  )
+;;
+(defwidget mem [];; Just memory :)
+  ;; Mem: 48% 986/2048MB
+  (box :class "f3text" :halign "end" "${round(EWW_RAM.used_mem_perc, 0)}% ${round(EWW_RAM.used_mem / 1000000, 0)}/${round(EWW_RAM.total_mem / 1000000, 0)}MB")
+  )
+;;
+;; (defwidget allocationrate
+;;   ;; Allocation rate: 078MB /s
+;;   )
+;;
+;; (defwidget allocated
+;;   ;; Allocated: 100% 2048MB
+;;   )
+;;
+(defwidget cpu [];; Cpu???
+  ;; CPU: 12x 12th Gen Intel(R) Core(TM) i7-1255U
+  (box :class "f3text" :halign "end" "CPU: ${cpuvar}")
+)
+;;
+(defwidget display [];; Screen resolution
+;; Display: 1920x1080 (Intel)
+  (box :class "f3text" :halign "end" "Display: ${resvar}")
+)
+;;
+(defwidget gpu [] ;; GPU information
+;;   ;; Inter(R) Iris(R) Xe Graphics
+  (box :class "f3text" :halign "end" "${gpuvar}")
+)
+;;
+;; (defwidget something ;; OpenGL version??? idk
+;;   ;; 3.2.0 - Build 31.0.101.3301
+;;   )

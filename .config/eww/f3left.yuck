@@ -1,0 +1,114 @@
+(defpoll versionvar :interval "100000s" `uname -sr`)
+(defpoll fpsvar :interval "10s" `source /home/minecraft/.dotfiles/scripts/f3.sh; get_rr`)
+(defpoll curbright :interval "0.1s" "brightnessctl -m | awk -F, '{print $3}'")
+(defpoll perbright :interval "0.1s" "brightnessctl -m | awk -F, '{print $4}'")
+(defpoll maxbright :interval "100000s" "brightnessctl -m | awk -F, '{print $5}'")
+(defpoll curthreads :interval "5s" "ps -eo nlwp | tail -n +2 | awk '{ num_threads += $1 } END { print num_threads }'")
+(defpoll maxthreads :interval "1000000s" "cat /proc/sys/kernel/threads-max")
+(defpoll curproc :interval "5s" "ps -e | wc -l")
+(defpoll hostvar :interval "1000000s" "hostname -f")
+(defpoll usrvar :interval "1000000s" "whoami")
+(defpoll wmvar :interval "1000000s" "/home/minecraft/.dotfiles/scripts/f3.sh get_wm")
+(defpoll modelvar :interval "1000000s" "/home/minecraft/.dotfiles/scripts/f3.sh get_model")
+(defpoll volumevar :interval "0.1s" "amixer sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
+
+(defwidget version [] ;; OS (see neofetch)
+;;   ;; Minecraft 1.19.3 (1.19.3/vanilla)
+  (box :class "f3text" :halign "start" "${versionvar}")
+  )
+;;
+(defwidget fps [] ;; Refresh rate, GPU utilization
+  ;; 59 fps T: 60 vsyncfancy fancy-clouds B: 0 GPU: 51%
+  (box :class "f3text" :halign "start" "${fpsvar} fps GPU: 51%")
+  )
+
+(defwidget internet [];; Up/down internet?
+  ;; Integrated server @ 5 ms ticks, 2 tx, 32 rx
+  (box :class "f3text" :halign "start" "Network: ${round(EWW_NET.wlan0.NET_UP, 1)} tx, ${round(EWW_NET.wlan0.NET_DOWN, 1)} rx")
+)
+
+(defwidget chunks []
+;;   ;; C: 746/26136 (s) D: 16, pC: 000, pU: 00, aB: 12
+  (box :class "f3text" :halign "start" "D: ${round(EWW_DISK["/"].used / 1073741824, 0)}/${round(EWW_DISK["/"].total / 1073741824, 0)}G D: 16, pC: 000, pU: 00, aB: 12")
+  )
+;;
+(defwidget entities [] ;; E = threads in use/ threads available?
+  ;; E: 2/67, B: 0, SD: 12
+  (box :class "f3text" :halign "start" "E: ${curthreads}/${maxthreads}")
+  )
+;;
+(defwidget particles [] ;; Processes, threads????
+;;   ;; P: 3, T: 67
+  (box :class "f3text" :halign "start" "P: ${curproc}, T: ${curthreads}")
+  )
+;;
+;; (defwidget chunksc
+;;   ;; Chunks[C] W: 1521, 1026 E: 67,27,1026
+;;   )
+;;
+;; (defwidget chunkss
+;;   ;; Chunks[S] W: 3721, E: 358,358,139,1369,1369,0,0
+;;   )
+;;
+(defwidget dimension [];;Window manager? Host machine?
+  ;; minecraft:overworld FC: 0  
+  (box :class "f3text" :halign "start" "Machine: ${modelvar}:${hostvar}")
+  )
+;;
+;; (defwidget coords []
+;;   ;; XYZ: 0.500 / 73.00000 / 0.500
+  ;; (box :class "f3text" :halign "start" "${EWW_BATTERY}")
+  ;; )
+;;
+;; (defwidget block
+;;   ;; Block: 0 73 0 [0 9 0]
+;;   )
+;;
+;; (defwidget chunks
+;;   ;; Chunk: 0 4 0 [0 0 in r.0.0.mca]
+;;   )
+;;
+(defwidget facing []
+;;   ;; Facing: south (Towards positive Z) (0.0 / 0.0)
+  (box :class "f3text" :halign "start" "Status: ${EWW_BATTERY["BAT0"].status} (Towards negative X) (${EWW_BATTERY["BAT0"].capacity} / 100)")
+  )
+;;
+(defwidget light [];;Backlight of screen
+   ;; Client Light: 0 (0 sky, 0 block)
+  (box :class "f3text" :halign "start" "Light: ${perbright} ${curbright}/${maxbright}")  
+  )
+;;
+;; (defwidget CHS
+;;   ;; CH S: 73 M: 73
+;;   )
+;;
+;; (defwidget SHS
+;;   ;; SH S: 73 O: 73 M: 73 MJ: 73
+;;   )
+;;
+(defwidget biome [];;Window manager?
+;;   ;; Biome: minecraft:plains
+  (box :class "f3text" :halign "start" "DE: ${wmvar}:${usrvar}")
+  )
+;;
+(defwidget diff []
+  ;; Local Difficulty: 2.26 // 0.13 (Day 0)
+  (box :class "f3text" :halign "start" "Local Difficulty: 100 // (you use arch)")
+  )
+;;
+;; (defwidget noise
+;;   ;; T: -0.342 V: -0.284 C: 0.334 blablabla
+;;   )
+;;
+;; (defwidget biomebuilder
+;;   ;; Biome Builder PV: low C: far inland E: 3 T: 1 H: i
+;;   )
+;;
+;; (defwidget SC
+;;   ;; SC: 289 M: 0 C: 289 A: 0 A: 0 U: 0 W: 0 W: 0 M: 0
+;;   )
+;;
+(defwidget sounds []
+;;   ;; 0/247 + 0/8 (Mood 0%)
+  (box :class "f3text" :halign "start" "Sounds: ${volumevar}/100")
+  )

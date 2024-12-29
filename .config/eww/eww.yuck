@@ -3,6 +3,8 @@
 ;; (deflisten workspacesArray :initial "${[1]}"
 ;;   `~/.dotfiles/scripts/getWorkspaces.sh`)
 
+(include "/home/minecraft/.dotfiles/.config/eww/menu.yuck")
+(include "/home/minecraft/.dotfiles/.config/eww/f3.yuck")
 
 (deflisten workspacesActive :initial 0
   `~/.dotfiles/scripts/getWorkspaces.sh`)
@@ -56,10 +58,10 @@
                                :width "${(16 * 9 + 4 * 9 + 2) * 4}"
                                :anchor "bottom center")
            :stacking "fg"
-           :windowtype "dock"
-           :wm-ignore false
   (overlay
   (workspaces)
   (active :active workspacesActive :pix 4)
   )
 )
+
+
