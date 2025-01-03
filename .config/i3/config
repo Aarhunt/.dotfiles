@@ -228,7 +228,7 @@ workspace_auto_back_and_forth yes
 # Execute before launch
 # exec setxkbmap us,us -variant colemak_dh,
 exec_always ~/.dotfiles/scripts/polybar.sh $PRIMARY $SECONDARY
-exec feh --bg-fill ~/wallpaper.png
+exec_always feh --bg-fill ~/wallpaper.png
 exec wal -R -s
 exec picom -fb --transparent-clipping
 exec --no-startup-id clipcatd 
