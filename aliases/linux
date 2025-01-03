@@ -53,3 +53,13 @@ runc() {
     gcc -Wall -o prog "$1" 
     ./prog
 }
+
+gamemode() {
+  if [[ $1 == "creative" ]]; then
+    sudo su
+  elif [[ $1 == "survival" ]]; then 
+    if [[ $USER == "root" ]]; then
+      exit
+    fi
+  fi
+}

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set keyboard maps 
-localectl set-x11-keymap us "" colemak_dh 
-
 # Update
 sudo pacman -Syyu
 
@@ -12,8 +9,6 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 cd .. && rm -rf paru # Cleanup
-
-sudo cp ./scripts/i3lock.sh /bin/i3lockcolor
 
 # Install packages
 sudo pacman -S --needed --noconfirm - < ./.vars/pacman.txt 
@@ -51,4 +46,4 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Install zsh-autosugestions
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
-# GTK theme?
+sudo ln -s ~/.dotfiles/scripts/gamemode /bin/
