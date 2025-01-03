@@ -29,18 +29,18 @@ font pango:Monocraft 10
 corner_radius 10
 
 # Window background blur
-blur off
-blur_xray off
+blur on
+blur_xray on
 blur_passes 2
 blur_radius 5
 
-shadows off
+shadows on
 shadows_on_csd off
 shadow_blur_radius 20
 shadow_color #0000007F
 
 # inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-default_dim_inactive 0.0
+default_dim_inactive 0.2
 dim_inactive_colors.unfocused #000000FF
 dim_inactive_colors.urgent #900000FF
 
@@ -59,11 +59,6 @@ input * {
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $HOME/.dotfiles/wallpapers/mc/6.png fill
 #
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
 #
@@ -255,7 +250,11 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Search exec bemenu-run
-bindsym F3 exec ~/.dotfiles/scripts/f3window.sh
+
+# eww
+bindsym $mod+XF86AudioRaiseVolume exec ~/.dotfiles/scripts/f3window.sh
+bindsym $mod+Escape exec eww open menu
+exec eww open hotbar
 
 include /etc/sway/config.d/*
 

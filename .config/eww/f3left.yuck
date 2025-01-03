@@ -70,7 +70,7 @@
 ;;
 (defwidget facing []
 ;;   ;; Facing: south (Towards positive Z) (0.0 / 0.0)
-  (box :class "f3text" :halign "start" "Status: ${EWW_BATTERY["BAT0"].status} (Towards negative X) (${EWW_BATTERY["BAT0"].capacity} / 100)")
+  (box :class "f3text" :halign "start" "Status: ${EWW_BATTERY["BAT0"].status} (Towards ${(EWW_BATTERY["BAT0"].status == "Discharging") ? "negative" : "positive"} X) (${EWW_BATTERY["BAT0"].capacity} / 100)")
   )
 ;;
 (defwidget light [];;Backlight of screen

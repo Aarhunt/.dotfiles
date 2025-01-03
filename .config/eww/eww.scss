@@ -1,6 +1,6 @@
 // ---------------- variables ----------------
 // pixel
-$pix: 4;
+$pix: 3;
 
 
 // body
@@ -61,7 +61,7 @@ $menu_bot_px: $pix * 2;
   box-shadow: inset $hot_border $hot_border 0 0 $hot_bg_top, inset (-$hot_border) (-$hot_border) 0 0 $hot_bg_bottom, inset $hot_border2 $hot_border2 0 0 $hot_bg_bottom, inset (-$hot_border2) (-$hot_border2) 0 0 $hot_bg_top;
   background-color: $hot_bg;
   font-family: "Monocraft", monospace;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .cella {

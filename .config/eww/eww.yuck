@@ -27,17 +27,18 @@
   )
 
 (defwidget cell [label]
-  (button :class "cells" :onclick `swaymsg workspace "${label}"` label)
+  (button :class "cells" :onclick `swaymsg workspace ${label}` 
+    label)
 )
 
 (defwidget cella [number pix]
-  (box :class "cella" 
+  (button :class "cella" 
        :style "margin-left: ${(number * 16 + (number * 2) * 2) * pix}; margin-right: ${((8 - number) * 16 + ((8 - number) * 2) * 2) * pix};"
     )
 )
 
-(defwidget active [active pix]
-  (stack :same-size true :selected active :transition "none"
+(defwidget active [cur pix]
+  (stack :same-size true :selected cur :transition "none"
     (cella :number 0 :pix pix)
     (cella :number 1 :pix pix)
     (cella :number 2 :pix pix)
@@ -54,13 +55,14 @@
            :monitor 0
            :geometry (geometry :x "0"
                                :y "00px"
-                               :height "${(16 + 4 + 2) * 4}"
-                               :width "${(16 * 9 + 4 * 9 + 2) * 4}"
+                               :height "${(16 + 4 + 2) * 3}"
+                               :width "${(16 * 9 + 4 * 9 + 2) * 3}"
                                :anchor "bottom center")
            :stacking "fg"
+           ;; :exclusive true
   (overlay
   (workspaces)
-  (active :active workspacesActive :pix 4)
+  (active :cur workspacesActive :pix 3)
   )
 )
 
