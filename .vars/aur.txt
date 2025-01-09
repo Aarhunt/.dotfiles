@@ -1,1 +1,1 @@
-xidlehook snapd tmux-bash-completion-git autotrash i3lock-color light mons onedrive-abraunegg pkgtop whatsdesk-bin xrdp
+snapd tmux-bash-completion-git autotrash light mons onedrive-abraunegg pkgtop whatsdesk-bin 

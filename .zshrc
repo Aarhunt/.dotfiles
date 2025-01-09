@@ -18,14 +18,10 @@ eval "$(oh-my-posh init zsh --config $HOME/.ohmyposh/themes/negligible.omp.json)
 eval "$(thefuck --alias)"
 
 plugins=(
-  git 
   aliases 
-  colorize
   rsync
   ssh-agent
   tmux
-  tmuxinator
-  archlinux
   zoxide
   colored-man-pages
   zsh-autosuggestions

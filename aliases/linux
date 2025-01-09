@@ -21,8 +21,6 @@ function elevate_last_command() {
 # Assign an alias to the function
 alias please=elevate_last_command
 
-alias wal='wal -s'
-
 # nvim
 alias nivm="nvim"
 alias vim="nvim"

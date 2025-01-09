@@ -22,7 +22,7 @@ set $menu "rofi -show combi"
 bindsym $mod+d exec $menu
 xwayland enable
 
-font pango:Monocraft 10
+font pango:JetBrains Mono 10
 
 ### Appearance
 # window corner radius in px
@@ -57,7 +57,7 @@ input * {
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $HOME/.dotfiles/wallpapers/mc/6.png fill
+output * bg $HOME/.dotfiles/wallpaper.png fill
 #
 
 ### Idle configuration
@@ -253,8 +253,6 @@ bindsym XF86Search exec bemenu-run
 
 # eww
 bindsym $mod+XF86AudioRaiseVolume exec ~/.dotfiles/scripts/f3window.sh
-bindsym $mod+Escape exec eww open menu
-exec eww open hotbar
 
 include /etc/sway/config.d/*
 

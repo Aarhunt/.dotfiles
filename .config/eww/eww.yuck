@@ -1,69 +1,49 @@
-;; (workspaces :array workspacesArray)
+(include "/home/minecraft/.dotfiles/.config/eww/f3left.yuck")
+(include "/home/minecraft/.dotfiles/.config/eww/f3right.yuck")
 
-;; (deflisten workspacesArray :initial "${[1]}"
-;;   `~/.dotfiles/scripts/getWorkspaces.sh`)
+(defwindow f3left 
+    :monitor 0
+    :geometry (geometry
+                :anchor "top left"
+                :width "800"
+                :height: "400"
+                )
+    :stacking "fg"
+  (box
+    :orientation "v"
+    :halign "start"
+    (version)
+    (internet) 
+    (entities)
+    (particles)
+    (dimension)
+    (chunks)
+    (box " ")
+    (facing)
+    (light)
+    (biome)
+    (diff)
+    (sounds)
+  )
+  )
 
-(include "/home/minecraft/.dotfiles/.config/eww/menu.yuck")
-(include "/home/minecraft/.dotfiles/.config/eww/f3.yuck")
-
-(deflisten workspacesActive :initial 0
-  `~/.dotfiles/scripts/getWorkspaces.sh`)
-
-(defwidget workspaces []
-  (box 
-      :orientation "h"
-      :space-evenly true
-      :class "around"
-    (cell :label 1)
-    (cell :label 2)
-    (cell :label 3)
-    (cell :label 4)
-    (cell :label 5)
-    (cell :label 6)
-    (cell :label 7)
-    (cell :label 8)
-    (cell :label 9)
+(defwindow f3right 
+    :monitor 0
+    :geometry (geometry
+                :anchor "top right" 
+                :width "800"
+                :height: "400"
+                )
+    :stacking "fg"
+  (box
+    :orientation "v"
+    :halign "end"
+    (kernel)
+    (mem)
+    (box " ")
+    (cpu)
+    (box " ")
+    (display)
+    (gpu)
     )
   )
-
-(defwidget cell [label]
-  (button :class "cells" :onclick `swaymsg workspace ${label}` 
-    label)
-)
-
-(defwidget cella [number pix]
-  (button :class "cella" 
-       :style "margin-left: ${(number * 16 + (number * 2) * 2) * pix}; margin-right: ${((8 - number) * 16 + ((8 - number) * 2) * 2) * pix};"
-    )
-)
-
-(defwidget active [cur pix]
-  (stack :same-size true :selected cur :transition "none"
-    (cella :number 0 :pix pix)
-    (cella :number 1 :pix pix)
-    (cella :number 2 :pix pix)
-    (cella :number 3 :pix pix)
-    (cella :number 4 :pix pix)
-    (cella :number 5 :pix pix)
-    (cella :number 6 :pix pix)
-    (cella :number 7 :pix pix)
-    (cella :number 8 :pix pix)
-  )
-)
-
-(defwindow hotbar
-           :monitor 0
-           :geometry (geometry :x "0"
-                               :y "00px"
-                               :height "${(16 + 4 + 2) * 3}"
-                               :width "${(16 * 9 + 4 * 9 + 2) * 3}"
-                               :anchor "bottom center")
-           :stacking "fg"
-           ;; :exclusive true
-  (overlay
-  (workspaces)
-  (active :cur workspacesActive :pix 3)
-  )
-)
-
-
