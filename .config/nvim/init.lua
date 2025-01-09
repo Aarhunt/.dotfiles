@@ -18,7 +18,7 @@ end
 
 vim.wo.number = true
 vim.wo.relativenumber = true
-
+vim.keymap.set("n", "<leader>;", "mmA;<Esc>\\m")
 if vim.lsp.inlay_hint then
   vim.lsp.inlay_hint.enable(true, { 0 })
 end
