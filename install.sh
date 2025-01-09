@@ -25,12 +25,6 @@ sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/s
 sudo cp /usr/share/sddm/themes/custom/Fonts/* /usr/share/fonts/
 sudo cp -r ./.vars/sddm.conf.d/ /etc/
 
-# Oh-My-Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Oh-My-Posh
-curl -s https://ohmyposh.dev/install.sh | zsh -s
-
 # Grub theme
 git clone https://github.com/Lxtharia/minegrub-theme.git
 cd ./minegrub-theme
@@ -42,8 +36,5 @@ else
   sudo echo "GRUB_THEME=/boot/grub/theme/minegrub/theme.txt:" >> /etc/default/grub
 fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-# Install zsh-autosugestions
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 sudo ln -s ~/.dotfiles/scripts/gamemode /bin/

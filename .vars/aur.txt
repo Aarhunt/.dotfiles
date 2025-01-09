@@ -1,1 +1,0 @@
-snapd tmux-bash-completion-git autotrash light mons onedrive-abraunegg pkgtop whatsdesk-bin 
