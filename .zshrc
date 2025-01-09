@@ -12,6 +12,7 @@ export ZSH_TMUX_AUTOCONNECT=false
 export ZSH_TMUX_AUTOQUIT=false
 export XDG_CONFIG_HOME=$HOME/.config/
 export ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+export TERM=xterm-kitty
 
 # Initialize some programs
 eval "$(oh-my-posh init zsh --config $HOME/.ohmyposh/themes/negligible.omp.json)"
